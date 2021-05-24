@@ -75,6 +75,14 @@ public class OrderServlet extends HttpServlet {
 			customer.setTel(tel);
 			customer.setEmail(email);
 
+			//入力値チェック
+			if (!Utils.isRequired(name) || !Utils.isRequired(address) || !Utils.isRequired(tel) || !Utils.isRequired(email)) {
+				request.setAttribute("message", "情報を正しく入力してください");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/errInternal.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
+
 			// セッションスコープに顧客情報を登録
 			session.setAttribute("customer", customer);
 			// 確認画面に遷移

@@ -48,19 +48,19 @@
 		<table border="1">
 			<tr>
 				<th>お名前</th>
-				<td><input type="text" name="name" value="鈴木一郎" /></td>
+				<td><input type="text" name="name" value="" /></td>
 			</tr>
 			<tr>
 				<th>住所</th>
-				<td><input type="text" name="address" value="東京都新宿区" /></td>
+				<td><input type="text" name="address" value="" /></td>
 			</tr>
 			<tr>
 				<th>電話</th>
-				<td><input type="text" name="tel" value="03-3333-3333" /></td>
+				<td><input type="text" name="tel" value="" /></td>
 			</tr>
 			<tr>
 				<th>e-mail</th>
-				<td><input type="text" name="email" value="ichiro@abc.com" /></td>
+				<td><input type="text" name="email" value="" /></td>
 			</tr>
 		</table>
 		<input type="submit" value="確認画面へ" />
