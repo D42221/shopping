@@ -68,6 +68,7 @@ public class CartServlet extends HttpServlet {
 				e.printStackTrace();
 				request.setAttribute("message", "内部エラーが発生しました。");
 				gotoPage(request, response, "errInternal.jsp");
+
 			}
 
 		// actionキーが「delete」の場合：カートから指定された商品を削除

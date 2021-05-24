@@ -32,7 +32,14 @@
 			<td>${item.value.code}</td>
 			<td>${item.value.name}</td>
 			<td>${item.value.price}円</td>
-			<td>${item.value.quantity}</td>
+			<td>${item.value.quantity}
+	<form action="/shopping/CartServlet?action=add" method="post">
+		<input type="submit" value="商品の増加" />
+	</form>
+	<form action="/shopping/CartServlet?action=add" method="post">
+	<input type="submit" value="商品の減少" />
+	</form>
+			</td>
 			<td>${item.value.price * item.value.quantity}円</td>
 			<td>
 				<form action="/shopping/CartServlet?action=delete" method="post">
@@ -46,7 +53,7 @@
 			<td colspan="6" style="text-align:right">総計：${cart.total}円</td>
 		</tr>
 	</table>
-	<form action="/shopping/OrderServlet?action=input_customer"" method="post">
+	<form action="/shopping/OrderServlet?action=input_customer" method="post">
 		<input type="submit" value="注文する" />
 	</form>
 	</c:if>
