@@ -52,6 +52,7 @@ public class CartBean {
 		// すでにカートに入っている商品を追加する場合
 		} else {
 			item.setQuantity(nums + item.getQuantity());
+
 		}
 		// 購入金額を再計算
 		this.recalcTotal();
@@ -77,5 +78,7 @@ public class CartBean {
 	public void deleteCart(int itemCode) {
 		this.items.remove(Integer.valueOf(itemCode));
 		this.recalcTotal();
+
 	}
 }
+
