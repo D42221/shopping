@@ -12,7 +12,6 @@
 	<jsp:include page="/menu.jsp" />
 
 	<h3>現在のカートの中身</h3>
-	<p>${intQuantity}</p>
 
 	<c:if test="${empty cart.items}">
 	<p>カートは空です。</p>
