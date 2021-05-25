@@ -12,6 +12,7 @@
 	<jsp:include page="/menu.jsp" />
 
 	<h3>現在のカートの中身</h3>
+	<p>${intQuantity}</p>
 
 	<c:if test="${empty cart.items}">
 	<p>カートは空です。</p>
@@ -42,8 +43,8 @@
 			<option value="4">4</option>
 			<option value="5">5</option>
 		</select>個<br/>
-		<button name = "operater" value = "plus"> + </button>
-		<button name = "operater" value = "minus"> - </button>
+		<button formaction="/shopping/CartServlet?action=change" name = "operater" value = "plus"> + </button>
+		<button formaction="/shopping/CartServlet?action=change" name = "operater" value = "minus"> - </button>
 		</form>
 			</td>
 			<td>${item.value.price * item.value.quantity}円</td>
@@ -64,7 +65,7 @@
 	</form>
 	</c:if>
 
-	<p>${intQuantity}</p>
+
 
 </body>
 </html>

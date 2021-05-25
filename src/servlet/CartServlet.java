@@ -101,7 +101,7 @@ public class CartServlet extends HttpServlet {
 			this.gotoPage(request, response, "cart.jsp");
 
 		//カート画面から追加または減らす
-		}else if(action.equals("change")) {
+		} else if(action.equals("change")) {
 
 			//リクエストパラメータ取得
 			String operater = request.getParameter("operater");
@@ -110,24 +110,49 @@ public class CartServlet extends HttpServlet {
 			int number = Integer.parseInt("operater");
 			int intQuantity = Integer.parseInt("quantity");
 
-			//追加する場合
-			if(operater.equals("plus")) {
-				intQuantity += number;
-				request.setAttribute("intQuantity",intQuantity);
-				HttpSession session = request.getSession(false);	// すでにセッションに登録されている属性を取得するので引数はfalse
-				CartBean cart = (CartBean) session.getAttribute("cart");
-//				ItemBean.addCart(cart, quantity);
-				this.gotoPage(request, response, "cart.jsp");
+			// 商品個番号の商品を取得
+			ItemDAO dao;
+			try {
+				dao = new ItemDAO();
 
-			//減らす場合
-			}else if(operater.equals("minus")) {
-				intQuantity -= number;
-				request.setAttribute("intQuantity",intQuantity);
-//				CartBean cart = (CartBean) session.getAttribute("cart");
-//				cart.addCart(bean, quantity);
-				this.gotoPage(request, response, "cart.jsp");
 
+				//追加する場合
+				if(operater.equals("plus")) {
+//					intQuantity += number;
+					request.setAttribute("intQuantity",intQuantity);
+					HttpSession session = request.getSession(false);	// すでにセッションに登録されている属性を取得するので引数はfalse
+
+					CartBean cart = (CartBean) session.getAttribute("cart");
+
+					String itemCode = request.getParameter("item_code");
+					int code = Integer.parseInt(itemCode);
+
+					ItemBean bean = dao.findByPrimariKey(code);
+
+
+					cart.addCart(bean, intQuantity);
+					this.gotoPage(request, response, "/cart.jsp");
+
+				//減らす場合
+				}else if(operater.equals("minus")) {
+//					intQuantity -= number;
+					request.setAttribute("intQuantity",intQuantity);
+					HttpSession session = request.getSession(false);	// すでにセッションに登録されている属性を取得するので引数はfalse
+
+					CartBean cart = (CartBean) session.getAttribute("cart");
+
+					String itemCode = request.getParameter("item_code");
+					int code = Integer.parseInt(itemCode);
+					// 商品個番号の商品を取得
+					ItemBean bean = dao.findByPrimariKey(code);
+					cart.addCart(bean, -1 * intQuantity);
+					this.gotoPage(request, response, "/cart.jsp");
+
+				}
+			} catch (DAOException e) {
+				e.printStackTrace();
 			}
+
 		}
 	}
 
