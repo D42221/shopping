@@ -41,6 +41,7 @@ public class CartServlet extends HttpServlet {
 		if (action == null || action.length() == 0 || action.equals("show")) {
 			this.gotoPage(request, response, "cart.jsp");
 
+
 		// actionキーが「add」の場合：カート内商品リストに商品を追加してカート画面に遷移（自画面遷移）
 		} else if (action.equals("add")) {
 			try {
