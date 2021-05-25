@@ -43,6 +43,7 @@
 		</select>個<br/>
 		<button name = "operater" value = "plus"> + </button>
 
+
 		<button name = "operater" value = "minus"> - </button>
 		</form>
 			</td>
