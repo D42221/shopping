@@ -41,7 +41,6 @@ public class CartServlet extends HttpServlet {
 		if (action == null || action.length() == 0 || action.equals("show")) {
 			this.gotoPage(request, response, "cart.jsp");
 
-
 		// actionキーが「add」の場合：カート内商品リストに商品を追加してカート画面に遷移（自画面遷移）
 		} else if (action.equals("add")) {
 			try {
@@ -101,32 +100,14 @@ public class CartServlet extends HttpServlet {
 			cart.deleteCart(code);
 			this.gotoPage(request, response, "cart.jsp");
 
-
+		//カート画面から追加または減らす
+		} else if(action.equals("change")) {
 
 			//リクエストパラメータ取得
 			String operater = request.getParameter("operater");
 			String quantity = request.getParameter("quantity");
 
 			int intQuantity = Integer.parseInt(quantity);
-
-
-			//追加する場合
-			if(operater.equals("plus")) {
-				intQuantity += number;
-				request.setAttribute("intQuantity",intQuantity);
-				HttpSession session = request.getSession(false);	// すでにセッションに登録されている属性を取得するので引数はfalse
-				CartBean cart = (CartBean) session.getAttribute("cart");
-//				ItemBean.addCart(cart, quantity);
-				this.gotoPage(request, response, "cart.jsp");
-				request.setAttribute("intQuantity", intQuantity);
-			}else if(action == "minus") {
-			//減らす場合
-			}else if(operater.equals("minus")) {
-				intQuantity -= number;
-				request.setAttribute("intQuantity",intQuantity);
-//				CartBean cart = (CartBean) session.getAttribute("cart");
-//				cart.addCart(bean, quantity);
-				this.gotoPage(request, response, "cart.jsp");
 
 			// 商品個番号の商品を取得
 			ItemDAO dao;
@@ -169,12 +150,9 @@ public class CartServlet extends HttpServlet {
 			} catch (DAOException e) {
 				e.printStackTrace();
 			}
-			}
+
 		}
-
-
 	}
-
 
 	/**
 	 * 指定されたURLに遷移する。
