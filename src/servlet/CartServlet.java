@@ -127,6 +127,7 @@ public class CartServlet extends HttpServlet {
 					ItemBean bean = dao.findByPrimariKey(code);
 
 
+
 					cart.addCart(bean, intQuantity);
 					this.gotoPage(request, response, "/cart.jsp");
 
