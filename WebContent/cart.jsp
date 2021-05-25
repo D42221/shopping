@@ -12,6 +12,7 @@
 	<jsp:include page="/menu.jsp" />
 
 	<h3>現在のカートの中身</h3>
+	<p>${intQuantity}</p>
 
 	<c:if test="${empty cart.items}">
 	<p>カートは空です。</p>
@@ -34,7 +35,11 @@
 			<td>${item.value.price}円</td>
 			<td>${item.value.quantity}
 
-		<form action="/shopping/CartServlet?action=change" >
+
+		<form action="/shopping/CartServlet" >
+		<input type = "hidden" name = "action" value ="change">
+		<input type = "hidden" name = "item_code" value = "${item.value.code}" >
+>>>>>>> branch 'main' of https://github.com/D42221/shopping
 		<select name="quantity">
 			<option value="1">1</option>
 			<option value="2">2</option>
@@ -42,8 +47,15 @@
 			<option value="4">4</option>
 			<option value="5">5</option>
 		</select>個<br/>
+<<<<<<< HEAD
 		<button name = "operater" value = "plus"> + </button>
 		<button name = "operater" value = "minus"> - </button>
+=======
+		<input  type = "submit" name = "operater" value = "plus"/>
+		<input  type = "submit" name = "operater" value = "minus"/>
+<!-- 		<button formaction="/shopping/CartServlet?action=change" formmethod="get" name = "operater" value = "plus"> + </button> -->
+<!-- 		<button formaction="/shopping/CartServlet?action=change" formmethod="get" name = "operater" value = "minus"> - </button> -->
+>>>>>>> branch 'main' of https://github.com/D42221/shopping
 		</form>
 			</td>
 			<td>${item.value.price * item.value.quantity}円</td>
@@ -64,7 +76,7 @@
 	</form>
 	</c:if>
 
-	<p>${intQuantity}</p>
+
 
 </body>
 </html>
