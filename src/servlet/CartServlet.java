@@ -116,15 +116,16 @@ public class CartServlet extends HttpServlet {
 				request.setAttribute("intQuantity",intQuantity);
 				HttpSession session = request.getSession(false);	// すでにセッションに登録されている属性を取得するので引数はfalse
 				CartBean cart = (CartBean) session.getAttribute("cart");
-//				ItemBean.addCart(cart, quantity);
+				//cart.addCart(quantity, intQuantity);
 				this.gotoPage(request, response, "cart.jsp");
 
 			//減らす場合
 			}else if(operater.equals("minus")) {
 				intQuantity -= number;
 				request.setAttribute("intQuantity",intQuantity);
-//				CartBean cart = (CartBean) session.getAttribute("cart");
-//				cart.addCart(bean, quantity);
+				HttpSession session = request.getSession(false);
+				CartBean cart = (CartBean) session.getAttribute("cart");
+				//cart.addCart(quantity, intQuantity);
 				this.gotoPage(request, response, "cart.jsp");
 
 			}
