@@ -99,9 +99,9 @@ public class OrderServlet extends HttpServlet {
 				request.setAttribute("message", "正しく操作してください。");
 				this.gotoPage(request, response, "/errInternal.jsp");
 				return;
-			}
-
-			try {
+				}
+			
+				try {
 				// 注文を確定
 				OrderDAO dao = new OrderDAO();
 				int orderNumber = dao.saveOrder(customer, cart);

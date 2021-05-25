@@ -35,6 +35,7 @@ public class CartServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// パラメータの解析：actionキーを取得して処理を分岐
+
 		String action = request.getParameter("action");
 		// actionキーが「show」またはパラメータがない場合はカート画面に遷移
 		if (action == null || action.length() == 0 || action.equals("show")) {
@@ -98,11 +99,21 @@ public class CartServlet extends HttpServlet {
 			// カートから商品を削除
 			cart.deleteCart(code);
 			this.gotoPage(request, response, "cart.jsp");
-			// カートの個数を増やす減らす
-		}else if (action.equals("chan")) {
-			request.getParameter("operater");
-			if(action=="plus") {
 
+
+
+		}else if(action.equals("change")) {
+			request.getParameter("operater");
+			request.getParameter("quantity");
+			int number = Integer.parseInt("operater");
+			int intQuantity = Integer.parseInt("quantity");
+			if(action == "plus") {
+				intQuantity += number;
+				this.gotoPage(request, response, "cart.jsp");
+				request.setAttribute("intQuantity", intQuantity);
+			}else if(action == "minus") {
+				intQuantity -= number;
+				this.gotoPage(request, response, "cart.jsp");
 			}
 
 		}
