@@ -33,12 +33,17 @@
 			<td>${item.value.name}</td>
 			<td>${item.value.price}円</td>
 			<td>${item.value.quantity}
-	<form action="/shopping/CartServlet?action=add" method="post">
-		<input type="submit" value="商品の増加" />
-	</form>
-	<form action="/shopping/CartServlet?action=add" method="post">
-	<input type="submit" value="商品の減少" />
-	</form>
+		<form>
+		<select name="quantity">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>個<br/>
+		<button name = "operater" value = "plus"> + </button>
+		<button name = "operater" value = "minus"> - </button>
+		</form>
 			</td>
 			<td>${item.value.price * item.value.quantity}円</td>
 			<td>

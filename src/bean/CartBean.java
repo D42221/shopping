@@ -48,12 +48,15 @@ public class CartBean {
 		if (item == null) {
 			bean.setQuantity(nums);
 			items.put(Integer.valueOf(bean.getCode()), bean);
-
 		// すでにカートに入っている商品を追加する場合
-		} else {
+		} else  {
 			item.setQuantity(nums + item.getQuantity());
-
 		}
+
+
+
+
+
 		// 購入金額を再計算
 		this.recalcTotal();
 	}
