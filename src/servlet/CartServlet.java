@@ -99,19 +99,34 @@ public class CartServlet extends HttpServlet {
 			// カートから商品を削除
 			cart.deleteCart(code);
 			this.gotoPage(request, response, "cart.jsp");
+
+		//カート画面から追加または減らす
 		}else if(action.equals("change")) {
-			request.getParameter("operater");
-			request.getParameter("quantity");
+
+			//リクエストパラメータ取得
+			String operater = request.getParameter("operater");
+			String quantity = request.getParameter("quantity");
+
 			int number = Integer.parseInt("operater");
-			@SuppressWarnings("unused")
 			int intQuantity = Integer.parseInt("quantity");
-			if(action == "plus") {
+
+			//追加する場合
+			if(operater.equals("plus")) {
 				intQuantity += number;
+				request.setAttribute("intQuantity",intQuantity);
+				HttpSession session = request.getSession(false);	// すでにセッションに登録されている属性を取得するので引数はfalse
+				CartBean cart = (CartBean) session.getAttribute("cart");
+//				ItemBean.addCart(cart, quantity);
 				this.gotoPage(request, response, "cart.jsp");
-				//request.setAttribute("intQuantity", );
-			}else if(action == "minus") {
+
+			//減らす場合
+			}else if(operater.equals("minus")) {
 				intQuantity -= number;
+				request.setAttribute("intQuantity",intQuantity);
+//				CartBean cart = (CartBean) session.getAttribute("cart");
+//				cart.addCart(bean, quantity);
 				this.gotoPage(request, response, "cart.jsp");
+
 			}
 		}
 	}

@@ -33,6 +33,7 @@
 			<td>${item.value.name}</td>
 			<td>${item.value.price}円</td>
 			<td>${item.value.quantity}
+
 		<form action="/shopping/CartServlet?action=change" >
 		<select name="quantity">
 			<option value="1">1</option>
@@ -62,6 +63,8 @@
 		<input type="submit" value="注文する" />
 	</form>
 	</c:if>
+
+	<p>${intQuantity}</p>
 
 </body>
 </html>
