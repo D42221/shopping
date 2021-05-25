@@ -98,6 +98,17 @@ public class CartServlet extends HttpServlet {
 			// カートから商品を削除
 			cart.deleteCart(code);
 			this.gotoPage(request, response, "cart.jsp");
+		}else if(action.equals("change")) {
+			request.getParameter("operater");
+			request.getParameter("quantity");
+			int number = Integer.parseInt("operater");
+			@SuppressWarnings("unused")
+			int intQuantity = Integer.parseInt("quantity");
+			if(action == "plus") {
+				intQuantity += number;
+			}else if(action == "minus") {
+				intQuantity -= number;
+			}
 		}
 	}
 

@@ -33,7 +33,7 @@
 			<td>${item.value.name}</td>
 			<td>${item.value.price}円</td>
 			<td>${item.value.quantity}
-		<form>
+		<form action="/shopping/CartServlet?action=change" >
 		<select name="quantity">
 			<option value="1">1</option>
 			<option value="2">2</option>
@@ -42,8 +42,6 @@
 			<option value="5">5</option>
 		</select>個<br/>
 		<button name = "operater" value = "plus"> + </button>
-
-
 		<button name = "operater" value = "minus"> - </button>
 		</form>
 			</td>
