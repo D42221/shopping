@@ -64,5 +64,7 @@
 	</form>
 	</c:if>
 
+	<p>${intQuantity}</p>
+
 </body>
 </html>
