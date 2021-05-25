@@ -75,6 +75,8 @@ public class OrderServlet extends HttpServlet {
 			customer.setTel(tel);
 			customer.setEmail(email);
 
+
+
 			//入力値チェック
 			if (!Utils.isRequired(name) || !Utils.isRequired(address) || !Utils.isRequired(tel) || !Utils.isRequired(email)) {
 				request.setAttribute("message", "情報を正しく入力してください");

@@ -22,6 +22,8 @@
 			<th>削除</th>
 		</tr>
 
+
+
 		<c:forEach items="${cart.items}" var="item">
 		<tr>
 			<td>${item.value.code}</td>
