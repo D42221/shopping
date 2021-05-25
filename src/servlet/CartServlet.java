@@ -107,8 +107,7 @@ public class CartServlet extends HttpServlet {
 			String operater = request.getParameter("operater");
 			String quantity = request.getParameter("quantity");
 
-			int number = Integer.parseInt("operater");
-			int intQuantity = Integer.parseInt("quantity");
+			int intQuantity = Integer.parseInt(quantity);
 
 			// 商品個番号の商品を取得
 			ItemDAO dao;
