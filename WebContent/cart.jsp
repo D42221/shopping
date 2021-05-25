@@ -33,14 +33,6 @@
 			<td>${item.value.name}</td>
 			<td>${item.value.price}円</td>
 			<td>${item.value.quantity}
-<<<<<<< HEAD
-	<form action="/shopping/CartServlet?action=add" method="post">
-		<input type="submit" value="商品の増加" />
-	</form>
-	<form action="/shopping/CartServlet?action=sub" method="post">
-	<input type="submit" value="商品の減少" />
-	</form>
-=======
 		<form>
 		<select name="quantity">
 			<option value="1">1</option>
@@ -54,7 +46,6 @@
 
 		<button name = "operater" value = "minus"> - </button>
 		</form>
->>>>>>> branch 'main' of https://github.com/D42221/shopping
 			</td>
 			<td>${item.value.price * item.value.quantity}円</td>
 			<td>
