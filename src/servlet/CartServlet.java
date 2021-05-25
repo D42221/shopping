@@ -36,6 +36,7 @@ public class CartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// パラメータの解析：actionキーを取得して処理を分岐
 		String action = request.getParameter("action");
+
 		// actionキーが「show」またはパラメータがない場合はカート画面に遷移
 		if (action == null || action.length() == 0 || action.equals("show")) {
 			this.gotoPage(request, response, "cart.jsp");
@@ -43,6 +44,8 @@ public class CartServlet extends HttpServlet {
 		// actionキーが「add」の場合：カート内商品リストに商品を追加してカート画面に遷移（自画面遷移）
 		} else if (action.equals("add")) {
 			try {
+
+
 				// リクエストパラメータを取得
 				String itemCode = request.getParameter("item_code");
 				int code = Integer.parseInt(itemCode);
@@ -113,6 +116,10 @@ public class CartServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 		dispatcher.forward(request, response);
 	}
+
+
+
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

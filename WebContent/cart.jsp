@@ -36,7 +36,7 @@
 	<form action="/shopping/CartServlet?action=add" method="post">
 		<input type="submit" value="商品の増加" />
 	</form>
-	<form action="/shopping/CartServlet?action=add" method="post">
+	<form action="/shopping/CartServlet?action=sub" method="post">
 	<input type="submit" value="商品の減少" />
 	</form>
 			</td>
