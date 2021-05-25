@@ -109,6 +109,7 @@ public class OrderServlet extends HttpServlet {
 				request.setAttribute("orderNumber", orderNumber);
 				// 完了画面に遷移
 				this.gotoPage(request, response, "/order.jsp");
+				session.invalidate();
 			} catch (DAOException e) {
 				e.printStackTrace();
 				request.setAttribute("message", "内部エラーが発生しました。");
@@ -117,7 +118,9 @@ public class OrderServlet extends HttpServlet {
 		} else {
 			request.setAttribute("message", "正しく操作してください。");
 			this.gotoPage(request, response, "/errInternal.jsp");
+
 		}
+
 	}
 
 	/**
