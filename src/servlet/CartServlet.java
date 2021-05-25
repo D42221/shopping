@@ -98,8 +98,17 @@ public class CartServlet extends HttpServlet {
 			// カートから商品を削除
 			cart.deleteCart(code);
 			this.gotoPage(request, response, "cart.jsp");
+			// カートの個数を増やす減らす
+		}else if (action.equals("chan")) {
+			request.getParameter("operater");
+			if(action=="plus") {
+
+			}
+
 		}
+
 	}
+
 
 	/**
 	 * 指定されたURLに遷移する。
