@@ -143,11 +143,24 @@ public class CartServlet extends HttpServlet {
 					int code = Integer.parseInt(itemCode);
 					// 商品個番号の商品を取得
 					ItemBean bean = dao.findByPrimariKey(code);
+
+
+					if ((bean.getQuantity() - intQuantity) <= 0 ) {
+						request.setAttribute("message", "個数を正しく設定してください");
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/errInternal.jsp");
+						dispatcher.forward(request, response);
+						return;
+						}
 					cart.addCart(bean, -1 * intQuantity);
+
+
+
+
+					}
 					this.gotoPage(request, response, "/cart.jsp");
 
 				}
-			} catch (DAOException e) {
+			 catch (DAOException e) {
 				e.printStackTrace();
 			}
 

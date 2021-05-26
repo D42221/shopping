@@ -79,7 +79,7 @@ public class OrderServlet extends HttpServlet {
 
 			//入力値チェック
 			if (!Utils.isRequired(name) || !Utils.isRequired(address) || !Utils.isRequired(tel) || !Utils.isRequired(email)) {
-				request.setAttribute("message", "情報を正しく入力してください");
+				request.setAttribute("message", "お客様情報を正しく入力してください");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/errInternal.jsp");
 				dispatcher.forward(request, response);
 				return;
@@ -100,7 +100,7 @@ public class OrderServlet extends HttpServlet {
 				this.gotoPage(request, response, "/errInternal.jsp");
 				return;
 				}
-			
+
 				try {
 				// 注文を確定
 				OrderDAO dao = new OrderDAO();
