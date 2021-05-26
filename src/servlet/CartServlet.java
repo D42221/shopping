@@ -23,18 +23,19 @@ import dao.ItemDAO;
 public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CartServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public CartServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// パラメータの解析：actionキーを取得して処理を分岐
 
 		String action = request.getParameter("action");
@@ -42,7 +43,7 @@ public class CartServlet extends HttpServlet {
 		if (action == null || action.length() == 0 || action.equals("show")) {
 			this.gotoPage(request, response, "cart.jsp");
 
-		// actionキーが「add」の場合：カート内商品リストに商品を追加してカート画面に遷移（自画面遷移）
+			// actionキーが「add」の場合：カート内商品リストに商品を追加してカート画面に遷移（自画面遷移）
 		} else if (action.equals("add")) {
 			try {
 				// リクエストパラメータを取得
@@ -73,10 +74,10 @@ public class CartServlet extends HttpServlet {
 
 			}
 
-		// actionキーが「delete」の場合：カートから指定された商品を削除
+			// actionキーが「delete」の場合：カートから指定された商品を削除
 		} else if (action.equals("delete")) {
 			// セッションからカートを取得
-			HttpSession session = request.getSession(false);	// すでにセッションに登録されている属性を取得するので引数はfalse
+			HttpSession session = request.getSession(false); // すでにセッションに登録されている属性を取得するので引数はfalse
 
 			// セッションがない場合：不正なアクセスが含まれている場合もあるのでエラーページに強制的に遷移
 			if (session == null) {
@@ -101,8 +102,8 @@ public class CartServlet extends HttpServlet {
 			cart.deleteCart(code);
 			this.gotoPage(request, response, "cart.jsp");
 
-		//カート画面から追加または減らす
-		} else if(action.equals("change")) {
+			//カート画面から追加または減らす
+		} else if (action.equals("change")) {
 
 			//リクエストパラメータ取得
 			String operater = request.getParameter("operater");
@@ -115,10 +116,10 @@ public class CartServlet extends HttpServlet {
 			try {
 				dao = new ItemDAO();
 				//追加する場合
-				if(operater.equals("plus")) {
-//					intQuantity += number;
-					request.setAttribute("intQuantity",intQuantity);
-					HttpSession session = request.getSession(false);	// すでにセッションに登録されている属性を取得するので引数はfalse
+				if (operater.equals("plus")) {
+					//					intQuantity += number;
+					request.setAttribute("intQuantity", intQuantity);
+					HttpSession session = request.getSession(false); // すでにセッションに登録されている属性を取得するので引数はfalse
 
 					CartBean cart = (CartBean) session.getAttribute("cart");
 
@@ -127,16 +128,14 @@ public class CartServlet extends HttpServlet {
 
 					ItemBean bean = dao.findByPrimariKey(code);
 
-
-
 					cart.addCart(bean, intQuantity);
 					this.gotoPage(request, response, "/cart.jsp");
 
-				//減らす場合
-				}else if(operater.equals("minus")) {
-//					intQuantity -= number;
-					request.setAttribute("intQuantity",intQuantity);
-					HttpSession session = request.getSession(false);	// すでにセッションに登録されている属性を取得するので引数はfalse
+					//減らす場合
+				} else if (operater.equals("minus")) {
+					//					intQuantity -= number;
+					request.setAttribute("intQuantity", intQuantity);
+					HttpSession session = request.getSession(false); // すでにセッションに登録されている属性を取得するので引数はfalse
 
 					CartBean cart = (CartBean) session.getAttribute("cart");
 
@@ -148,25 +147,19 @@ public class CartServlet extends HttpServlet {
 					ItemBean bean = (ItemBean) itemMap.get(code);
 
 					int diff = bean.getQuantity() - intQuantity;
-					if (diff <= 0 ) {
+					if (diff <= 0) {
 						request.setAttribute("message", "個数を正しく設定してください");
 						RequestDispatcher dispatcher = request.getRequestDispatcher("/errInternal.jsp");
 						dispatcher.forward(request, response);
 						return;
-						} else {
-							cart.addCart(bean, -1 * intQuantity);
-						}
-
-
-
-
-
-
+					} else {
+						cart.addCart(bean, -1 * intQuantity);
 					}
 					this.gotoPage(request, response, "/cart.jsp");
 
 				}
-			 catch (DAOException e) {
+
+			} catch (DAOException e) {
 				e.printStackTrace();
 			}
 
@@ -181,19 +174,17 @@ public class CartServlet extends HttpServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String page) throws ServletException, IOException {
+	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String page)
+			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 		dispatcher.forward(request, response);
 	}
 
-
-
-
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
