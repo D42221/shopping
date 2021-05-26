@@ -6,8 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Cart</title>
+
 </head>
 <body>
+	<script>document.addEventListener("keydown", function (e) {
+
+    if ((e.which || e.keyCode) == 116 ) {
+        e.preventDefault();
+    }
+
+});
+</script>
 	<!-- メニュー -->
 	<jsp:include page="/menu.jsp" />
 
@@ -35,7 +44,7 @@
 			<td>${item.value.quantity}
 
 
-		<form action="/shopping/CartServlet" >
+		<form action="/shopping/CartServlet" method = "post" >
 		<input type = "hidden" name = "action" value ="change">
 		<input type = "hidden" name = "item_code" value = "${item.value.code}" >
 
