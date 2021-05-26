@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -141,17 +142,22 @@ public class CartServlet extends HttpServlet {
 
 					String itemCode = request.getParameter("item_code");
 					int code = Integer.parseInt(itemCode);
-					// 商品個番号の商品を取得
-					ItemBean bean = dao.findByPrimariKey(code);
 
+					@SuppressWarnings("rawtypes")
+					Map itemMap = cart.getItems();
+					ItemBean bean = (ItemBean) itemMap.get(code);
 
-					if ((bean.getQuantity() - intQuantity) <= 0 ) {
+					int diff = bean.getQuantity() - intQuantity;
+					if (diff <= 0 ) {
 						request.setAttribute("message", "個数を正しく設定してください");
 						RequestDispatcher dispatcher = request.getRequestDispatcher("/errInternal.jsp");
 						dispatcher.forward(request, response);
 						return;
+						} else {
+							cart.addCart(bean, -1 * intQuantity);
 						}
-					cart.addCart(bean, -1 * intQuantity);
+
+
 
 
 
