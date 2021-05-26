@@ -19,7 +19,6 @@
 			<th>単価（税込）</th>
 			<th>個数</th>
 			<th>小計</th>
-			<th>削除</th>
 		</tr>
 
 
@@ -31,12 +30,6 @@
 			<td>${item.value.price}円</td>
 			<td>${item.value.quantity}</td>
 			<td>${item.value.price * item.value.quantity}円</td>
-			<td>
-				<form action="/shopping/CartServlet?action=delete" method="post">
-					<input type="hidden" name="item_code" value="${item.value.code}" />
-					<input type="submit" value="削除" />
-				</form>
-			</td>
 		</tr>
 		</c:forEach>
 		<tr>
