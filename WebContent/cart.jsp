@@ -4,19 +4,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+$(window).on('beforeunload', function(e){
+  var message = '本当に更新してよろしいですか？';
+  e.returnValue = message;
+  return message;
+});
+</script>
+
 <meta charset="UTF-8">
 <title>Cart</title>
 
 </head>
 <body>
-	<script>document.addEventListener("keydown", function (e) {
 
-    if ((e.which || e.keyCode) == 116 ) {
-        e.preventDefault();
-    }
-
-});
-</script>
 	<!-- メニュー -->
 	<jsp:include page="/menu.jsp" />
 
