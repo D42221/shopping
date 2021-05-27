@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet {
 				// セッション管理を行う
 				HttpSession session = request.getSession();
 				// ログイン済みの属性を設定する
+				session.setAttribute("name", USER);
 				session.setAttribute("isLogin", "true");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 				dispatcher.forward(request, response);

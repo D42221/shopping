@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,11 +9,10 @@
 <body>
 	<!-- メニュー -->
 	<jsp:include page="/menu.jsp" />
+	 <p>ようこそ、<%=session.getAttribute("name")%>さん</p>
 
-	<h3>ようこそ！サンプルショッピングサイトへ</h3>
 
-
-	<p>このサイトは教材用として作成されています。</p>
-	<p>デザインなどは各自工夫してみましょう。</p>
+	<p>このサイトは何でも揃うショッピングサイトです！！！</p>
+	<p>お買い物楽しんでね！！</p>
 </body>
 </html>

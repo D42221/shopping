@@ -15,6 +15,6 @@
 	<p>お客様の注文番号は</p>
 	<h3>${orderNumber}</h3>
 	<p>になります。</p>
-
+<a href =/shopping/login.jsp>ログアウト</a>
 </body>
 </html>
