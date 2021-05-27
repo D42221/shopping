@@ -4,12 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="cart.js">
+<!--
 <script type="text/javascript">
 $(window).on('beforeunload', function(e){
   var message = '本当に更新してよろしいですか？';
   e.returnValue = message;
   return message;
 });
+  -->
 </script>
 
 <meta charset="UTF-8">
